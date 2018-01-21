@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.viper.android.apf.dynamic_proxy_hook">
+    <application>
+        <activity android:name=".a.AActivity" />
+    </application>
+</manifest>
