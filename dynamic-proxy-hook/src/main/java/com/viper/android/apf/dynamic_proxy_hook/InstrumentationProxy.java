@@ -16,6 +16,8 @@ import java.lang.reflect.Method;
  * Created by mylhyz on 2018/1/21.
  * <p>
  * proxy for instrumentation
+ * <p>
+ * 代理接口，这个使用的是继承的方法然后替换其实现
  */
 
 public class InstrumentationProxy extends Instrumentation {
@@ -41,6 +43,7 @@ public class InstrumentationProxy extends Instrumentation {
                 + options + '\n'
         );
         try {
+            //由于execStartActivity是隐藏API，所以无法被重载/直接调用，因此使用反射调用
             @SuppressLint("PrivateApi")
             Method exec_start_activity_method = Instrumentation.class.getDeclaredMethod("execStartActivity", Context.class, IBinder.class, IBinder.class, Activity.class, Intent.class, int.class, Bundle.class);
             exec_start_activity_method.setAccessible(true);

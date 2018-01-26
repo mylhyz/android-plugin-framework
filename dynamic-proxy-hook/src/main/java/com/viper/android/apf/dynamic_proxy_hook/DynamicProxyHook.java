@@ -14,7 +14,10 @@ import java.lang.reflect.Method;
 
 public class DynamicProxyHook {
 
-
+    /**
+     * hook 调用链中一些比较稳定的API ， 比如此处仅仅hook了ActivityThread，这个hook点一般是单例/静态变量
+     * @throws Exception 一般性异常
+     */
     public static void inject() throws Exception {
         @SuppressLint("PrivateApi")
         Class<?> activity_thread_class = Class.forName("android.app.ActivityThread");

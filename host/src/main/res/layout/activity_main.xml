@@ -14,4 +14,12 @@
         android:textAllCaps="false"
         tools:ignore="HardcodedText" />
 
+    <Button
+        android:id="@+id/binder_hook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BinderHook"
+        android:textAllCaps="false"
+        tools:ignore="HardcodedText" />
+
 </LinearLayout>
