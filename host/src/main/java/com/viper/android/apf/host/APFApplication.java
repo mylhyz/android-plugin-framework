@@ -29,6 +29,8 @@ public class APFApplication extends Application {
         } catch (Exception e) {
             Logger.e(e.getMessage());
         }
+
+        Thread.setDefaultUncaughtExceptionHandler(new UEH());
     }
 
     @Override
