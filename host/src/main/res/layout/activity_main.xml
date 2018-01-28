@@ -22,4 +22,12 @@
         android:textAllCaps="false"
         tools:ignore="HardcodedText" />
 
+    <Button
+        android:id="@+id/ams_hook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AMS Hook"
+        android:textAllCaps="false"
+        tools:ignore="HardcodedText" />
+
 </LinearLayout>

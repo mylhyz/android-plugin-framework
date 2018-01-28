@@ -29,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
                 hookClipboardManager();
             }
         });
+
+        findViewById(R.id.ams_hook).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hookActivityManager();
+            }
+        });
     }
 
 
@@ -42,5 +49,9 @@ public class MainActivity extends AppCompatActivity {
         if (manager != null && manager.hasPrimaryClip()) {
             Logger.i(manager.getPrimaryClip().toString());
         }
+    }
+
+    private void hookActivityManager() {
+        startActivity(new Intent(this, AActivity.class));
     }
 }
