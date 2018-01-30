@@ -6,8 +6,6 @@ import android.content.Context;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.viper.android.apf.ams_pms_hook.IAMSHook;
-import com.viper.android.apf.binder_hook.BinderHook;
-import com.viper.android.apf.dynamic_proxy_hook.DynamicProxyHook;
 
 
 /**
@@ -25,8 +23,8 @@ public class APFApplication extends Application {
         super.attachBaseContext(base);
 
         try {
-            BinderHook.inject();
-            DynamicProxyHook.inject();
+//            BinderHook.inject();
+//            DynamicProxyHook.inject();
             IAMSHook.inject();
         } catch (Exception e) {
             Logger.e(e.getMessage());

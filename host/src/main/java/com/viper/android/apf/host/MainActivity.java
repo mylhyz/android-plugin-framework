@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.orhanobut.logger.Logger;
+import com.viper.android.apf.ams_pms_hook.b.BActivity;
 import com.viper.android.apf.dynamic_proxy_hook.a.AActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,6 +53,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void hookActivityManager() {
-        startActivity(new Intent(this, AActivity.class));
+        startActivity(new Intent(this, BActivity.class));
     }
 }
