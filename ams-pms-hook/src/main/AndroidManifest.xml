@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.viper.android.apf.ams_pms_hook" />
+    package="com.viper.android.apf.ams_pms_hook">
+
+    <application>
+        <activity android:name=".b.BActivity" />
+    </application>
+</manifest>
