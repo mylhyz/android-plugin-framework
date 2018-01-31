@@ -2,6 +2,7 @@ package com.viper.android.apf.host;
 
 import android.content.ClipboardManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
                 hookActivityManager();
             }
         });
+
+        findViewById(R.id.pms_hook).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hookPackageManager();
+            }
+        });
     }
 
 
@@ -54,5 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void hookActivityManager() {
         startActivity(new Intent(this, BActivity.class));
+    }
+
+    private void hookPackageManager() {
+        getBaseContext().getPackageManager().getInstalledApplications(PackageManager.GET_META_DATA);
     }
 }

@@ -11,7 +11,7 @@ import java.lang.reflect.Proxy;
  * hook activity manager service
  */
 
-public class IAMSHook {
+public final class IAMSHook {
 
     @SuppressLint("PrivateApi")
     public static void inject() throws Exception {
