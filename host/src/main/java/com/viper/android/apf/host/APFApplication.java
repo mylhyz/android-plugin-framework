@@ -5,10 +5,8 @@ import android.content.Context;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
-import com.viper.android.apf.ams_pms_hook.IAMSHook;
-import com.viper.android.apf.ams_pms_hook.IPMSHook;
-import com.viper.android.apf.binder_hook.BinderHook;
-import com.viper.android.apf.dynamic_proxy_hook.DynamicProxyHook;
+import com.orhanobut.logger.PrettyFormatStrategy;
+import com.viper.android.apf.activity_lifecycle_hook.IActivityLifecycleHook;
 
 
 /**
@@ -17,20 +15,22 @@ import com.viper.android.apf.dynamic_proxy_hook.DynamicProxyHook;
  * application for apf
  */
 
-public class APFApplication extends Application {
+public final class APFApplication extends Application {
 
-//    private static final String TAG = APFApplication.class.getSimpleName();
+    //    private static final String TAG = APFApplication.class.getSimpleName();
+    private static final String TAG_APF = "APF_DEBUG";
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        Logger.addLogAdapter(new AndroidLogAdapter());
+        initLogger();
 
         try {
-            BinderHook.inject();
-            DynamicProxyHook.inject();
+//            BinderHook.inject();
+//            DynamicProxyHook.inject();
 //            IAMSHook.inject();
-            IPMSHook.inject(base);
+//            IPMSHook.inject(base);
+            IActivityLifecycleHook.inject();
         } catch (Exception e) {
             Logger.e(e.getMessage());
         }
@@ -38,9 +38,17 @@ public class APFApplication extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new UEH());
     }
 
+    private void initLogger() {
+        PrettyFormatStrategy strategy = PrettyFormatStrategy
+                .newBuilder()
+                .tag(TAG_APF)
+                .build();
+        Logger.addLogAdapter(new AndroidLogAdapter(strategy));
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-//        Logger.i("Application OnCreate");
+        Logger.i("Application OnCreate");
     }
 }

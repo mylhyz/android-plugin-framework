@@ -1,4 +1,4 @@
-package com.viper.android.apf.ams_pms_hook;
+package com.viper.android.apf.activity_lifecycle_hook;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -8,12 +8,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Proxy;
 
 /**
- * Created by mylhyz on 2018/1/28.
+ * Created by mylhyz on 2018/2/2.
  * <p>
- * hook activity manager service
+ * hook to proxy activity lifecycle
  */
 
-public final class IAMSHook {
+public final class IActivityLifecycleHook {
+
 
     public static void inject() throws Exception {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
