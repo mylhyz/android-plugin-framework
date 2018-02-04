@@ -1,6 +1,8 @@
-<manifest package="com.viper.android.apf.activity_lifecycle_hook">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.viper.android.apf.activity_lifecycle_hook">
 
     <application>
-
+        <activity android:name=".c.RealActivity" />
+        <activity android:name=".StubActivity" />
     </application>
 </manifest>

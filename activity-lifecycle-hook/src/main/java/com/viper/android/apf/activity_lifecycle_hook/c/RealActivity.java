@@ -20,13 +20,14 @@ public class RealActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         RelativeLayout layout = new RelativeLayout(this);
-        layout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        layout.setLayoutParams(params);
 
         TextView tv = new TextView(this);
+
         tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         tv.setText("Real Activity");
         tv.setTextSize(30);
-
         layout.addView(tv);
 
         setContentView(layout);

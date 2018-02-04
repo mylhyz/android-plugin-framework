@@ -21,7 +21,8 @@ public class BActivity extends Activity {
         final TextView view = new TextView(this);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         view.setText(getTitle());
-        view.setTextSize(24);
+        view.setTextSize(30);
+        view.setText("B Activity");
         setContentView(view);
     }
 }
