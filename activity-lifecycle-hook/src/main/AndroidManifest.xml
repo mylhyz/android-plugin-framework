@@ -2,7 +2,7 @@
     package="com.viper.android.apf.activity_lifecycle_hook">
 
     <application>
-        <activity android:name=".c.RealActivity" />
+        <!--<activity android:name=".c.RealActivity" />-->
         <activity android:name=".StubActivity" />
     </application>
 </manifest>

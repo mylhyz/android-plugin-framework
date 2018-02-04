@@ -1,5 +1,8 @@
 package com.viper.android.apf.activity_lifecycle_hook;
 
+import android.content.ComponentName;
+import android.content.Intent;
+
 import com.orhanobut.logger.Logger;
 
 import java.lang.reflect.InvocationHandler;
@@ -29,6 +32,7 @@ public class IActivityManagerHandler implements InvocationHandler {
 
     private Object hookStartActivity(Method method, Object[] args) throws Exception {
         Logger.i("hookStartActivity args size is: %d", args.length);
+        int index = 0;
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < args.length; ++i) {
             if (args[i] == null) {
@@ -38,6 +42,20 @@ public class IActivityManagerHandler implements InvocationHandler {
             }
         }
         Logger.i("args=:\n%s", builder.toString());
+        for (int i = 0; i < args.length; ++i) {
+            if (args[i] instanceof Intent) {
+                index = i;
+                break;
+            }
+        }
+        Intent rawIntent = (Intent) args[index];
+        Logger.i("parse raw intent %s", rawIntent);
+
+        Intent stubIntent = new Intent();
+        final String pkg = "com.viper.android.apf.activity_lifecycle_hook";
+        stubIntent.setComponent(new ComponentName(pkg, StubActivity.class.getCanonicalName()));
+        Logger.i("parse stub intent %s", stubIntent);
+
         return method.invoke(mBase, args);
     }
 }
