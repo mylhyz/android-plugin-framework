@@ -28,7 +28,7 @@ public class BinderHook {
         IBinder rawBinder = (IBinder) get_service_method.invoke(null, Context.CLIPBOARD_SERVICE);//获取原始service-manager对象
         IBinder hookedBinder = (IBinder) Proxy.newProxyInstance(serviceManager.getClassLoader(),
                 new Class[]{IBinder.class},
-                new BinderProxyHandler(rawBinder));
+                new ClipboardServiceProxyHandler(rawBinder));
         //将代理对象放到缓存中，替换掉系统原始对象
         Field s_cache_field = serviceManager.getDeclaredField("sCache");
         s_cache_field.setAccessible(true);

@@ -18,14 +18,14 @@ import java.lang.reflect.Proxy;
  * hook IBinder 对象的 queryLocalInterface 方法，让其返回我们创建的代理IInterface对象
  */
 
-public class BinderProxyHandler implements InvocationHandler {
+public class ClipboardServiceProxyHandler implements InvocationHandler {
 
     private IBinder mBase;
     private Class<?> mStub;
     private Class<?> mInterface;
 
     @SuppressLint("PrivateApi")
-    public BinderProxyHandler(IBinder base) {
+    public ClipboardServiceProxyHandler(IBinder base) {
         mBase = base;
         try {
             this.mStub = Class.forName("android.content.IClipboard$Stub");
@@ -41,7 +41,7 @@ public class BinderProxyHandler implements InvocationHandler {
             Logger.i("hook [queryLocalInterface]");
             return Proxy.newProxyInstance(proxy.getClass().getClassLoader(),//代理的class loader
                     new Class[]{IBinder.class, IInterface.class, this.mInterface},//代理实现的接口数组（Binder/IInterface/IClipboard）
-                    new BinderHandler(mBase, mStub));//返回一个代理对象代理实现上述接口
+                    new ClipboardManagerProxyHandler(mBase, mStub));//返回一个代理对象代理实现上述接口
         }
         Logger.i("invoke method [" + method.getName() + "]");
         return null;

@@ -14,11 +14,11 @@ import java.lang.reflect.Method;
  * 实现 IClipboard 接口的代理对象
  */
 
-public class BinderHandler implements InvocationHandler {
+public class ClipboardManagerProxyHandler implements InvocationHandler {
 
     private Object mBase;
 
-    public BinderHandler(IBinder base, Class<?> subClazz) {
+    public ClipboardManagerProxyHandler(IBinder base, Class<?> subClazz) {
         try {
             Method as_interface_method = subClazz.getDeclaredMethod("asInterface", IBinder.class);
             this.mBase = as_interface_method.invoke(null, base);//先获取原始对象
